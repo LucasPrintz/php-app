@@ -12,4 +12,4 @@ Clone this repository:
 
 Run `docker compose up --build`
 
-Access `localhost:8080/client.php`
+Access `localhost:9000/client.php`
