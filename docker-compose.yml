@@ -1,0 +1,21 @@
+version: '3'
+services:
+  php:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "9000:80"
+    depends_on:
+      - rabbitmq
+  rabbitmq:
+    image: rabbitmq:3.9.29
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  server:
+    build: .
+    entrypoint: php /var/www/html/server.php
+    depends_on:
+      rabbitmq:
+        condition: service_started
